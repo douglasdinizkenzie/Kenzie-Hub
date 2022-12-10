@@ -33,6 +33,23 @@ export const Button = styled(Link)`
           text-decoration: none;
           text-align: center;
         `;
+
+      case "AddButton":
+        return css`
+          background-color: var(--gray-3);
+          color: var(--gray-0);
+          padding: 0.7rem 1rem;
+          border-radius: 4px;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 18px;
+          font-weight: bold;
+
+          @media (max-width: 400px) {
+            padding: 0.5rem 1.5rem;
+          }
+        `;
     }
   }}
 `;

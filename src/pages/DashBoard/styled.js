@@ -65,8 +65,14 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
 
-  & > h1 {
-    font-size: 18px;
+  .container-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .container-add > h1 {
+    font-size: 16px;
     color: var(--gray-0);
   }
 

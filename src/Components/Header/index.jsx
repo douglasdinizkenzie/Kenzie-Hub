@@ -10,6 +10,7 @@ export const Header = styled.div`
   height: 80px;
   display: flex;
   justify-content: center;
+  background-color: var(--gray-4);
   align-items: center;
   z-index: 1;
 `;

@@ -18,6 +18,8 @@ import { ErrorMessage } from "../../Components/ErrorMessage";
 import { toast } from "react-toastify";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export function Register() {
   const [isHidePassword, setIsHidePassword] = useState(true);
@@ -25,39 +27,16 @@ export function Register() {
   const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
 
+  const { registerSubmit } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(FormRegisterSchema),
   });
-
-  async function registerSubmit(data) {
-    try {
-      setIsDisabled(true);
-
-      let request = await api.post("/users", {
-        email: data.email,
-        password: data.password,
-        name: data.name,
-        bio: data.bio,
-        contact: data.contact,
-        course_module: data.course_module,
-      });
-
-      toast.success("Registrado!");
-      reset();
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      toast.error("Ops, alguma coisa deu errado!");
-    } finally {
-      setIsDisabled(false);
-    }
-  }
 
   return (
     <ContainerForms>

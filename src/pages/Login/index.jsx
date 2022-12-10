@@ -1,7 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -16,13 +17,28 @@ import { Forms } from "../../Components/Forms";
 import { ButtonsForm } from "../../Components/Forms/ButtonsForm";
 import { Inputs } from "../../Components/Forms/Inputs";
 import { Logo } from "../../Components/Logo";
+import { UserContext } from "../../contexts/UserContext";
 import { FormLoginSchema } from "./FormLoginSchema";
 import { DivLogin } from "./styled";
 
-export function Login({ setUser }) {
-  const [isHidePassword, setIsHidePassword] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
+export function Login() {
   const navigate = useNavigate();
+
+  const [isHidePassword, setIsHidePassword] = useState(true);
+
+  const { isDisabled, loginSubmit } = useContext(UserContext);
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("@TOKEN");
+
+      if (token) {
+        navigate("/dashboard");
+      }
+    } catch (error) {
+    } finally {
+    }
+  }, []);
 
   const {
     register,
@@ -32,25 +48,6 @@ export function Login({ setUser }) {
     mode: "onBlur",
     resolver: yupResolver(FormLoginSchema),
   });
-
-  async function loginSubmit(data) {
-    try {
-      setIsDisabled(true);
-      let request = await api.post("/sessions", data);
-      toast.success(`Seja bem vindo ${request.data.user.name}!`);
-      localStorage.setItem("@TOKEN", request.data.token);
-      localStorage.setItem("@USERID", request.data.user.id);
-      setUser(request.data.user.name);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 2000);
-    } catch (error) {
-      console.log(error);
-      toast.error("Ops, alguma coisa deu errado!");
-    } finally {
-      setIsDisabled(false);
-    }
-  }
 
   return (
     <ContainerForms>

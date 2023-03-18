@@ -1,8 +1,8 @@
-# Kenzie hub
+# Kenzie Hub
 
 ### Aplicação onde o usuário pode cadastrar e gerenciar suas tecnologias.
 
-A aplicação contém um cadastro, login e dashboard onde o usuário irá cadastrar tecnologia e o nível de conhecimento nela. As tecnologias podem ser editadas ou excluídas.
+A aplicação contém um cadastro, login e dashboard onde o usuário irá cadastrar tecnologias e o nível de conhecimento nelas. As tecnologias podem ser editadas ou excluídas.
 
 Tecnologias utilizadas: 
 React

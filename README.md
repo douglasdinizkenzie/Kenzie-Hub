@@ -45,6 +45,6 @@ npm run dev
 
 ---
 
-Agora você pode vizualiar a aplicação com o servidor rodando.
+Agora você pode visualizar a aplicação com o servidor rodando.
 
-Pode também vizualiar através do link do deploy: https://react-entrega-kenzie-hub-douglasdinizkenzie.vercel.app
+Pode também visualizar através do link do deploy: https://react-entrega-kenzie-hub-douglasdinizkenzie.vercel.app
